@@ -29,7 +29,7 @@
             "method": "run_generate_metadata_report",
             "input_mapping": [
                 {
-                    "narrative_system_variable": "workspace_name",
+                    "narrative_system_variable": "workspace",
                     "target_property": "workspace_name"
                 },{
                     "input_parameter": "object_type",
