@@ -6,7 +6,7 @@ module generate_metadata_report {
 
     typedef structure {
         string object_type;
-        string workspace_id;
+        string workspace_name;
     } input;
 
     typedef structure {

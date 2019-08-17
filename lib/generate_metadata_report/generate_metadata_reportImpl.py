@@ -77,8 +77,7 @@ class generate_metadata_report:
         workspace_name = params['workspace_name']
 
         ws = Workspace(self.ws_url)
-        print (workspace_name)
-        print (self.ws_url)
+        print (params)
 
 
 
