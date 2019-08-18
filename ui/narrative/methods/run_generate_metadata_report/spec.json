@@ -5,22 +5,42 @@
     ],
     "contact": "",
     "categories": ["active"],
-    "widgets": {
-        "input": null,
-        "output": null
-    },
     "parameters": [ 
+
+
+  {
+     "id" : "object_type",
+    "optional" : false,
+    "advanced" : false,
+    "allow_multiple" : false,
+    "default_values" : [ "KBaseRNASeq.RNASeqAlignment" ],
+    "field_type" : "dropdown",
+    "dropdown_options":{
+      "options": [
         {
-            "id": "object_type",
-            "optional": true,
-            "advanced": false,
-            "allow_multiple": false,
-            "default_values": [ "" ],
-            "field_type": "text",
-            "text_options": {
-                "valid_ws_types": [ ]
-            }
+          "value": "KBaseRNASeq.RNASeqAlignment",
+          "display": "KBaseRNASeq.RNASeqAlignment"
+        },
+        {
+          "value": "KBaseGenomeAnnotations.Assembly",
+          "display": "KBaseGenomeAnnotations.Assembly"
+        },
+        {
+          "value": "KBaseFile.SingleEndLibrary",
+          "display": "KBaseFile.SingleEndLibrary"
+        },
+        {
+          "value": "KBaseFile.PairedEndLibrary",
+          "display": "KBaseFile.PairedEndLibrary"
+        },
+        {
+          "value": "KBaseGenomes.Genome",
+          "display": "KBaseGenomes.Genome"
         }
+
+      ]
+    }
+  }
     ],
     "behavior": {
         "service-mapping": {
@@ -35,6 +55,8 @@
                     "input_parameter": "object_type",
                     "target_property": "object_type"
                 }
+            }
+
             ],
             "output_mapping": [
                 {
