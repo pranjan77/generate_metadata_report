@@ -3,6 +3,10 @@
     "authors": [
         "pranjan77"
     ],
+    "widgets": {
+        "input": null,
+        "output": "no-display"
+    },
     "contact": "",
     "categories": ["active"],
     "parameters": [ 
