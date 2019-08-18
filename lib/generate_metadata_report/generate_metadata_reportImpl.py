@@ -144,7 +144,7 @@ class generate_metadata_report:
             'direct_html_link_index': 0,
             'file_links': [],
             'html_links': [],
-            'html_window_height': 220,
+            'html_window_height': 500,
             'workspace_name': params['workspace_name'],
             'report_object_name': reportname
         }
