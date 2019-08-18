@@ -55,7 +55,6 @@
                     "input_parameter": "object_type",
                     "target_property": "object_type"
                 }
-            }
 
             ],
             "output_mapping": [
