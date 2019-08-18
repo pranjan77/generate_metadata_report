@@ -45,6 +45,33 @@ class generate_metadata_report:
             else:
                 raise
 
+    def write_pd_html(self, df, path):
+        html_string = '''
+        <html>
+        <head><title>Report</title></head>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/>
+        <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+        <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" class="init">
+        $(document).ready(function() {
+            $('#example').DataTable();
+            } );
+        </script>
+        <body>
+        '''
+        uid = str(uuid.uuid4())
+        uidx= "#" + uid
+        html_string =html_string.replace('#example', uidx )
+        table = df.to_html(table_id=uid)
+        html_string += table
+        html_string += '''
+        </body>
+        </html>
+        '''
+        with open(path , 'w') as f:
+            f.write(html_string)
+
+
 
     #END_CLASS_HEADER
 
@@ -89,6 +116,7 @@ class generate_metadata_report:
         for object_name in object_names:
             obj_meta_data = ws.get_object_info3({'objects': [{'workspace': workspace_name, 'name': object_name}], 'includeMetadata':1}, )
             metadata = obj_meta_data.get('infos')[0][10]
+            print (metadata)
             metadata_keys = metadata.keys()
             object_pd = pd.Series(metadata,index = metadata_keys)
             d[object_name] = object_pd 
@@ -100,7 +128,8 @@ class generate_metadata_report:
         htmlDir = os.path.join(self.shared_folder, str(uuid.uuid4()))
         self._mkdir_p(htmlDir)
         report_file_path = os.path.join(htmlDir, "index.html")
-        df.T.to_html(report_file_path)
+        #df.to_html(report_file_path)
+        self.write_pd_html(df.T, report_file_path)
 
         try:
             html_upload_ret = self.dfu.file_to_shock({'file_path': htmlDir, 'make_handle': 0, 'pack': 'zip'})
