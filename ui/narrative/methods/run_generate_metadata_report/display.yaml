@@ -1,10 +1,10 @@
 #
 # define display information
 #
-name: Generate metadata report
+name: Generate summary report
 
 tooltip: |
-    Generate metadata report for all objects of a given type
+    Generate summary report for all objects of a given type
 
 screenshots: []
 
