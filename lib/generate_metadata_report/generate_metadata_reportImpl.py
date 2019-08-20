@@ -120,12 +120,13 @@ class generate_metadata_report:
                 object_pd = pd.Series(alignment_stats,index = metadata_keys)
                 d[object_name] = object_pd 
 
-        for object_name in object_names:
-            obj_meta_data = ws.get_object_info3({'objects': [{'workspace': workspace_name, 'name': object_name}], 'includeMetadata':1}, )
-            metadata = obj_meta_data.get('infos')[0][10]
-            metadata_keys = metadata.keys()
-            object_pd = pd.Series(metadata,index = metadata_keys)
-            d[object_name] = object_pd 
+        else:
+            for object_name in object_names:
+                obj_meta_data = ws.get_object_info3({'objects': [{'workspace': workspace_name, 'name': object_name}], 'includeMetadata':1}, )
+                metadata = obj_meta_data.get('infos')[0][10]
+                metadata_keys = metadata.keys()
+                object_pd = pd.Series(metadata,index = metadata_keys)
+                d[object_name] = object_pd 
 
 
 
