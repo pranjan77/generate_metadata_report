@@ -33,5 +33,20 @@ parameters :
             Object type for report.
 
 description : |
-    <p>This app generates a table with metadata for all objects of the selected type</p>
+    This app can be used to compare all objects of given type in a narrative. Input is the object type of interest. App reads the metadata fields of each object of that type and generates a report.
+    <br>
+    eg. When a user selects KBaseRNASeq.Alignment as input, output is a table that compares all object of that type in the narrative in fields like total_reads, size, alignment rate, mapped reads etc.
+    </br>
+    It only works if objects of selected type are present in the narrative. It doesn't show error but output is just an empty table.
+    </br>
+
+    Following 5 object types are supported and can be selected from the drop down menu. 
+    1. KBaseRNASeq.RNASeqAlignment
+    2. KBaseGenomeAnnotations.Assembly
+    3. KBaseFile.SingleEndLibrary
+    4. KBaseFile.PairedEndLibrary
+    5. KBaseGenomes.Genome
+
+
+
 
