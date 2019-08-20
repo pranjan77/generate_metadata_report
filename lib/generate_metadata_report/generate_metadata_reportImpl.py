@@ -113,16 +113,25 @@ class generate_metadata_report:
 
         d = dict()
 
+        if (object_type == 'KBaseRNASeq.RNASeqAlignment'):
+            for object_name in object_names:
+                alignment_stats = ws.get_objects2({'objects': [{'workspace': workspace_name, 'name': object_name}]})['data'][0]['data']['alignment_stats']
+                metadata_keys = alignment_stats.keys()
+                object_pd = pd.Series(alignment_stats,index = metadata_keys)
+                d[object_name] = object_pd 
+
         for object_name in object_names:
             obj_meta_data = ws.get_object_info3({'objects': [{'workspace': workspace_name, 'name': object_name}], 'includeMetadata':1}, )
             metadata = obj_meta_data.get('infos')[0][10]
-            print (metadata)
             metadata_keys = metadata.keys()
             object_pd = pd.Series(metadata,index = metadata_keys)
             d[object_name] = object_pd 
+
+
+
         df = pd.DataFrame(d)
 
-
+        
 
 
         htmlDir = os.path.join(self.shared_folder, str(uuid.uuid4()))
